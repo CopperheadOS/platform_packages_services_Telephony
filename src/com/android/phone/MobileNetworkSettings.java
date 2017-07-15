@@ -1335,6 +1335,7 @@ public class MobileNetworkSettings extends Activity  {
                         case Phone.NT_MODE_LTE_TDSCDMA_GSM_WCDMA:
                         case Phone.NT_MODE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
                         case Phone.NT_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+                        case Phone.NT_MODE_LTE_ONLY:
                             // This is one of the modes we recognize
                             modemNetworkMode = buttonNetworkMode;
                             break;
@@ -1548,7 +1549,7 @@ public class MobileNetworkSettings extends Activity  {
                     break;
                 case Phone.NT_MODE_LTE_ONLY:
                     mButtonPreferredNetworkMode.setSummary(
-                            R.string.preferred_network_mode_lte_summary);
+                            R.string.preferred_network_mode_lte_only_summary);
                     break;
                 case Phone.NT_MODE_LTE_TDSCDMA_GSM:
                     mButtonPreferredNetworkMode.setSummary(
@@ -1649,6 +1650,11 @@ public class MobileNetworkSettings extends Activity  {
                         break;
                     }
                 case Phone.NT_MODE_LTE_ONLY:
+                    mButtonEnabledNetworks.setValue(
+                            Integer.toString(Phone.NT_MODE_LTE_ONLY));
+                    mButtonEnabledNetworks.setSummary((mShow4GForLTE == true)
+                            ? R.string.network_4G_only : R.string.network_lte_only);
+                    break;
                 case Phone.NT_MODE_LTE_WCDMA:
                     if (!mIsGlobalCdma) {
                         mButtonEnabledNetworks.setValue(
